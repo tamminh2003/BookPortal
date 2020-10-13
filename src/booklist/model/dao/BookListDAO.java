@@ -133,8 +133,9 @@ public class BookListDAO {
         	connection = getConnection();
             // Step 2:Create a statement using connection object
             preparedStatement = connection.prepareStatement(SEARCHBOOK);
-            System.out.println(preparedStatement);
+            
             preparedStatement.setString(1, "%" + search + "%");
+            System.out.println(preparedStatement);
             // Step 3: Execute the query or update query
             rs = preparedStatement.executeQuery();
 
