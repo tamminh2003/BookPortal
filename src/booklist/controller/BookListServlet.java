@@ -101,10 +101,12 @@ public class BookListServlet extends HttpServlet {
 		}
 	
 	private void showSearchBook(HttpServletRequest request, HttpServletResponse response)  throws SQLException, ServletException, IOException {
-		   String title = request.getParameter("search");
+		   String title = request.getParameter("booktitle");
+		   System.out.println(title);
 		   List < BookList > existingBook = booklistDAO.searchBookTitle(title);
+		   System.out.println(existingBook.size());
 		 RequestDispatcher dispatcher = request.getRequestDispatcher("booklist.jsp");
-		 request.setAttribute("book", existingBook);
+		 request.setAttribute("listBook", existingBook);
 		 dispatcher.forward(request, response);
 		}
 	private void selectBookTitle(HttpServletRequest request, HttpServletResponse response)  throws SQLException, ServletException, IOException {
