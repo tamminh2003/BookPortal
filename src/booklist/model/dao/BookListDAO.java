@@ -20,7 +20,7 @@ public class BookListDAO {
 
     private String SELECTBOOKID = "select bid,cid,booktitle,description,author,publisheddate,isbn,price,noofpages from books where bid =?";
     private String SELECTALLBOOKS = "select * from books ";
-    private String SEARCHBOOK = "select * from books where booktitle LIKE ('%<search_phrase>%')";
+    private String SEARCHBOOK = "select * from books where booktitle LIKE (?)";
 
 
 
@@ -134,7 +134,7 @@ public class BookListDAO {
             // Step 2:Create a statement using connection object
             preparedStatement = connection.prepareStatement(SEARCHBOOK);
             System.out.println(preparedStatement);
-            preparedStatement.setString(1, search);
+            preparedStatement.setString(1, "%" + search + "%");
             // Step 3: Execute the query or update query
             rs = preparedStatement.executeQuery();
 
